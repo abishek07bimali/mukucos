@@ -6,6 +6,7 @@ import com.example.cosmetic.Repo.UserRepo;
 import com.example.cosmetic.Services.UserServices;
 
 import com.example.cosmetic.config.PasswordEncoderUtil;
+import com.example.cosmetic.exception.AppException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -35,12 +36,14 @@ public class UserServiceImpl implements UserServices {
         return new UserPojo(user);
     }
 //
-//    @Override
-//    public User findByEmail(String email) {
-//        User user = userRepo.findByEmail(email)
-//                .orElseThrow(() -> new AppException("Invalid User email", HttpStatus.BAD_REQUEST));
-//        return user;
-//    }
+
+    @Override
+    public User findByEmail(String email) {
+        User user = userRepo.findByEmail(email)
+                .orElseThrow(() -> new AppException("Invalid User email", HttpStatus.BAD_REQUEST));
+        return user;
+    }
+
 //
 //    @Override
 //    public List<User> findAll() {

@@ -2,7 +2,9 @@ package com.example.cosmetic.Controller;
 
 
 
+import com.example.cosmetic.Entity.Product;
 import com.example.cosmetic.Pojo.UserPojo;
+import com.example.cosmetic.Services.ProductServices;
 import com.example.cosmetic.Services.UserServices;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -12,13 +14,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserController {
     private final UserServices userService;
-    @GetMapping("/homepage") //first maa chaine kura
+    private final ProductServices productServices;
+    @GetMapping("/homepage")
     public String getSetting(Model model) {
+        List<Product> productList=productServices.findAll();
+        model.addAttribute("add", productList);
+
+        List<Product> products = productServices.getThreeRandomData();
+
+        model.addAttribute("productfetch", products);
         return "index";
     }
 

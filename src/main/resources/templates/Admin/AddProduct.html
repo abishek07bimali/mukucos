@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/admin/saveproduct}" th:object="${add}" enctype="multipart/form-data">
+    <input type="text" hidden="hidden" th:field="*{id}" th:value="${add.id}">
+    <input type="text" placeholder="name" th:field="*{productname}" th:value="${add.productname}">
+    <input type="text" placeholder="quantity" th:field="*{quantity}" th:value="${add.quantity}">
+    <input type="text" placeholder="price" th:field="*{price}" th:value="${add.price}">
+    <input type="text" placeholder="description" th:field="*{description}" th:value="${add.description}">
+    <input type="file" name="image" accept="image/*" >
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
