@@ -28,6 +28,15 @@ public class Product {
     @Column(name = "quantity")
     private String quantity;
 
+
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "category")
+    private String catrgory;
+    @Column(name = "color")
+    private String color;
+
     @Column(name = "image")
     private String image;
 

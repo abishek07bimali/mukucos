@@ -21,7 +21,7 @@ public class LoginController {
     public String showLoginPage(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            return "redirect:/user/signup";
+            return "login";
         }
         return "redirect:/user/homepage";
     }
@@ -31,6 +31,6 @@ public class LoginController {
         if (authentication.isAuthenticated()) {
             SecurityContextHolder.clearContext();
         }
-        return "redirect:/user/create";
+        return "redirect:/login";
     }
 }

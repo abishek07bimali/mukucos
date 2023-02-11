@@ -16,6 +16,9 @@ public class ProductPojo {
     private  String productname;
     private String description;
      private String quantity;
+     private String brand;
+     private String category;
+     private String color;
      private MultipartFile image;
      public ProductPojo(Product product){
        this.id=product.getId();
@@ -23,5 +26,8 @@ public class ProductPojo {
        this.description=product.getDescription();
        this.productname=product.getProductname();
        this.quantity=product.getQuantity();
+       this.brand=product.getBrand();
+       this.category=product.getCatrgory();
+       this.color=product.getColor();
      }
 }

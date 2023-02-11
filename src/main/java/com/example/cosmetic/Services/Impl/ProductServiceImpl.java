@@ -39,6 +39,9 @@ public class ProductServiceImpl implements ProductServices {
         product.setPrice(productPojo.getPrice());
         product.setProductname(productPojo.getProductname());
         product.setQuantity(productPojo.getQuantity());
+        product.setBrand(productPojo.getBrand());
+        product.setColor(productPojo.getColor());
+        product.setCatrgory(productPojo.getCategory());
 
         if(productPojo.getImage()!=null){
             StringBuilder fileNames = new StringBuilder();
@@ -67,7 +70,19 @@ public class ProductServiceImpl implements ProductServices {
 
     @Override
     public Product findById(Integer id) {
-        return productRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
+        Product product=productRepo.findById(id).orElseThrow(()-> new RuntimeException("not found"));
+        product=Product.builder()
+                .id(product.getId())
+                .productname(product.getProductname())
+                .quantity(product.getQuantity())
+                .price(product.getPrice())
+                .brand(product.getBrand())
+                .catrgory(product.getCatrgory())
+                .color(product.getColor())
+                .description(product.getDescription())
+                .imageBase64(getImageBase64(product.getImage()))
+                .build();
+        return product;
     }
 
     @Override

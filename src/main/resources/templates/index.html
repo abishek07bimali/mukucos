@@ -24,7 +24,8 @@
             <li><a href="#about">About</a></li>
             <li><a href="#brands">Our Partners</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="demo.html" class="btn">Login</a></li>
+            <a th:href="@{~/user/viewAllMyOrders/}+${userdata.id}">Profile</a>
+<!--            <li><a href="demo.html" class="btn">Profile</a></li>-->
         </ul>
     </header>
     <!-- Home -->
@@ -45,6 +46,7 @@
         <div class="shop-container">
             <!-- Box 1 -->
             <div class="box" th:each="product:${add}">
+                <a th:href="@{~/user/productinfo/}+${product.id}">
                 <div class="box-img">
                     <img th:src="'data:image/png;base64,'+${product.imageBase64}" alt="">
                 </div>
@@ -59,7 +61,8 @@
                     </div>
                 </div>
                 <span th:text="${product.price}"></span>
-                <i class='bx bx-cart' ></i>
+               </a>
+<!--                <i class='bx bx-cart' >buy</i>-->
             </div>
 
         </div>
@@ -74,6 +77,8 @@
         <div class="new-container">
             <!-- Box 1 -->
             <div class="box" th:each="product:${productfetch}">
+                <a th:href="@{~/user/productinfo/}+${product.id}">
+
                 <div class="box-img">
                 <img th:src="'data:image/png;base64,'+${product.imageBase64}" alt="">
                 </div>
@@ -89,6 +94,7 @@
                 </div>
                 <span th:text="${product.price}"></span>
                 <i class='bx bx-cart' ></i>
+                </a>
             </div>
 
         </div>

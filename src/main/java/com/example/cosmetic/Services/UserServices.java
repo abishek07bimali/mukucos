@@ -7,4 +7,7 @@ public interface UserServices {
     UserPojo save (UserPojo userPojo);
     User findByEmail(String email);
 
+    User findBYId(Integer id);
+
+
 }

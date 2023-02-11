@@ -1,7 +1,9 @@
 package com.example.cosmetic.Controller;
 
+import com.example.cosmetic.Entity.Order;
 import com.example.cosmetic.Entity.Product;
 import com.example.cosmetic.Pojo.ProductPojo;
+import com.example.cosmetic.Services.OrderServices;
 import com.example.cosmetic.Services.ProductServices;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ import java.util.Map;
 @RequestMapping("/admin")
 public class AdminController {
     private  final ProductServices productServices;
+    private  final OrderServices orderServices;
     @GetMapping("/addproduct")
     public String getAddProductForm(Model model) {
         model.addAttribute("add",new ProductPojo());
@@ -65,6 +68,14 @@ public class AdminController {
     public String deleteMembers(@PathVariable("id") Integer id) {
         productServices.deleteById(id);
         return "redirect:/admin/viewallproduct";
+    }
+
+
+    @GetMapping("/viewallorder")
+    public String getOrderList(Model model) {
+        List<Order> orders=orderServices.findAll();
+        model.addAttribute("alllist", orders);
+        return "Admin/ViewOrders";
     }
 
 

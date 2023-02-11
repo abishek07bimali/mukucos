@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserServices {
         }
         user.setEmail(userPojo.getEmail());
         user.setFullname(userPojo.getFullname());
-
         user.setPassword(PasswordEncoderUtil.getInstance().encode(userPojo.getPassword()));
 
 //
@@ -41,6 +40,18 @@ public class UserServiceImpl implements UserServices {
     public User findByEmail(String email) {
         User user = userRepo.findByEmail(email)
                 .orElseThrow(() -> new AppException("Invalid User email", HttpStatus.BAD_REQUEST));
+        return user;
+    }
+
+
+    @Override
+    public User findBYId(Integer id) {
+        User user= userRepo.findById(id).orElseThrow(()->new RuntimeException("not found"));
+        user=User.builder()
+                .id(user.getId())
+                .fullname(user.getFullname())
+                .email(user.getEmail())
+                .build();
         return user;
     }
 
