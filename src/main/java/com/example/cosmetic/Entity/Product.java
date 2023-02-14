@@ -12,8 +12,8 @@ import lombok.*;
 @Table(name="product")
 public class Product {
     @Id
-    @SequenceGenerator(name = "jps_user_seq_gen", sequenceName = "jps_user_id_seq", allocationSize = 1)
-    @GeneratedValue(generator = "jps_user_seq_gen", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "product_seq_gen", sequenceName = "product_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "product_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @Column(name = "productname")
